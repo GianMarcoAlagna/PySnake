@@ -1,18 +1,11 @@
 import pygame
+from colors import *
 from snake import *
 from apple import *
 
 def main():
     pygame.init()
     run = True
-
-    GREEN = (0,255,0)
-    BLACK = (0,0,0)
-    DARKGREY = (20,20,20)
-    RED = (255,0,0)
-    WHITE = (255,255,255)
-    DARKBLUE = (39,68,114)
-
     dis_size = (1280, 720)
     #snake_size is the width and height
     snake_size = 20

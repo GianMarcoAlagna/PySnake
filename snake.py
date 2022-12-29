@@ -24,11 +24,15 @@ class Snake:
     
     def draw_snake(self,game,surface):
         #loop through body array
-        for part in self.body:
+        for indx, part in enumerate(self.body):
             #at each index is array, draw a rectangle
             #x axis = first item in current array index(part[0])
             #y axis = second item in current array index(part[1])
-            game.draw.rect(surface,self.color,(part[0],part[1],self.snake_size,self.snake_size))
+            if indx + 1 == self.length:
+                game.draw.rect(surface,(0,0,0),(part[0],part[1],self.snake_size,self.snake_size))
+            else:
+                game.draw.rect(surface,self.color,(part[0],part[1],self.snake_size,self.snake_size))
+            
 
     
     def mov_snake(self):
