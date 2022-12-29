@@ -11,13 +11,14 @@ class Snake:
     def __init__(self,snake_size,dis_size):
         self.snake_size = snake_size
         self.dis_size = dis_size
-        self.spawn_snake()
+        self.define_snake()
     
-    def spawn_snake(self):
+    def define_snake(self):
         #How many blocks of snake to spawn 
         self.length = 10
         #Each tuple in body array is one individual block of the snake
         #index[0] being the back end of the snake.
+        #the numbers 20,40,60 etc. are the x and y values of that block
         self.body = [(20,20),(20,40),(20,60)]
         self.direction = Direction.DOWN
     
@@ -28,6 +29,7 @@ class Snake:
             #x axis = first item in current array index(part[0])
             #y axis = second item in current array index(part[1])
             game.draw.rect(surface,self.color,(part[0],part[1],self.snake_size,self.snake_size))
+
     
     def mov_snake(self):
             #head variable is equal to the end tuple of body array aka the head of the snake
@@ -76,4 +78,9 @@ class Snake:
             elif body_part[1] < 0:
                 self.body.append((body_part[0],719))
                 self.body.pop(0)
+
+    #this is another debug function
+    # def add_block(self):
+    #     self.body.append((self.body[-1][0],self.body[-1][1]))
+    #     print("Block added")
                 
