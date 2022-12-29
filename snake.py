@@ -40,19 +40,19 @@ class Snake:
             head = self.body[-1]
             #checks snakes direction and compares it to the directions in the seperate Directions class.
             #if the direcion is down for instance, we create the next head,
-            #x-coord(head[0]) stays the same, then we set the second item to current value plus the snake size. 
+            #x-coord(head[0]) stays the same, then we set the second item to current value plus the snake size(rectangle height and width). 
             if self.direction == Direction.DOWN:
-                next_head = (head[0], head[1] + self.snake_size)
-                self.body.append(next_head)
+                new_snake_head = (head[0], head[1] + self.snake_size)
+                self.body.append(new_snake_head)
             elif self.direction == Direction.UP:
-                next_head = (head[0], head[1] - self.snake_size)
-                self.body.append(next_head)
+                new_snake_head = (head[0], head[1] - self.snake_size)
+                self.body.append(new_snake_head)
             elif self.direction == Direction.RIGHT:
-                next_head = (head[0] + self.snake_size, head[1])
-                self.body.append(next_head)
+                new_snake_head = (head[0] + self.snake_size, head[1])
+                self.body.append(new_snake_head)
             elif self.direction == Direction.LEFT:
-                next_head = (head[0] - self.snake_size, head[1])
-                self.body.append(next_head)
+                new_snake_head = (head[0] - self.snake_size, head[1])
+                self.body.append(new_snake_head)
 
             #after all conditions are checked, we pop the first element in the array-
             #whenever more than self.length(10), blocks have been appended.
