@@ -8,6 +8,7 @@ class Direction(Enum):
 
 class Snake:
     color = (0,255,0)
+    snake_made = False
     def __init__(self,snake_size,dis_size):
         self.snake_size = snake_size
         self.dis_size = dis_size
@@ -28,10 +29,10 @@ class Snake:
             #at each index is array, draw a rectangle
             #x axis = first item in current array index(part[0])
             #y axis = second item in current array index(part[1])
-            if indx + 1 == self.length:
-                game.draw.rect(surface,(0,0,0),(part[0],part[1],self.snake_size,self.snake_size))
-            else:
+            if indx + 1 != self.length:
                 game.draw.rect(surface,self.color,(part[0],part[1],self.snake_size,self.snake_size))
+            else:
+                game.draw.rect(surface,(0,0,0),(part[0],part[1],self.snake_size,self.snake_size))
             
 
     
@@ -81,6 +82,14 @@ class Snake:
             elif self.body[-1][1] < 0:
                 self.body.append((self.body[-1][0],719))
                 self.body.pop(0)
+    
+    def check_self_coll(self):
+        if len(self.body) == self.length:
+            #need to except the head in this check
+            for indx, body_part in enumerate(self.body):
+              if indx + 1 !=  len(self.body):
+                if self.body[-1] == body_part:
+                    return True
 
     #this is another debug function
     # def add_block(self):
