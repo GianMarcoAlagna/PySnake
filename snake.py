@@ -69,18 +69,17 @@ class Snake:
     #greater than the resolution or less than 0, if any of the statements return true, we will-
     #append a new block on the opposite side accordingly.
     def reset_snake(self):
-        for body_part in self.body:
-            if body_part[0] > 1280:
-                self.body.append((1,body_part[1]))
+            if self.body[-1][0] > 1280:
+                self.body.append((1,self.body[-1][1]))
                 self.body.pop(0)
-            elif body_part[0] < 0:
-                self.body.append((1279,body_part[1]))
+            elif self.body[-1][0] < 0:
+                self.body.append((1279,self.body[-1][1]))
                 self.body.pop(0)
-            elif body_part[1] > 720:
-                self.body.append((body_part[0],1))
+            elif self.body[-1][1] > 720:
+                self.body.append((self.body[-1][0],1))
                 self.body.pop(0)
-            elif body_part[1] < 0:
-                self.body.append((body_part[0],719))
+            elif self.body[-1][1] < 0:
+                self.body.append((self.body[-1][0],719))
                 self.body.pop(0)
 
     #this is another debug function
